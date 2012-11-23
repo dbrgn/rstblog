@@ -75,6 +75,10 @@ class Context(object):
         return str(value).lower() in ['y', 'true', 'yes', 'on', 'yeah', 'yep']
 
     @property
+    def language(self):
+        return self.config.get('language') or self.config.root_get('language', 'en')
+
+    @property
     def slug(self):
         directory, filename = os.path.split(self.source_filename)
         basename, ext = os.path.splitext(filename)
